@@ -1,0 +1,104 @@
+#include<stdio.h>
+#include<conio.h>
+#define max_size 30
+int full();
+int empty();
+struct student
+{
+ char name[15];
+ char usn[10];
+ char email[20];
+}stud[max_size];
+int top=-1;
+void push(struct student stud[])
+{if (full()==1)
+printf("student list is full");
+else
+{
+printf("\n enter student name");
+scanf("%s",stud[++top].name);
+printf("\n enter sudent usn");
+scanf("%s",stud[top].usn);
+printf("\n enter email id");
+scanf("%s",stud[top].email);
+}
+}
+void pop()
+{
+if (empty()==1)
+printf("\n student list is empty");
+else{
+printf("\n name:%s",stud[top].name);
+printf("\n usn:%s",stud[top].usn);
+printf("\n email:%s",stud[top].email);
+top--;
+}
+}
+void display()
+{if (empty()==1)
+printf("\n student list is empty");
+else
+{
+printf("\n name:%s",stud[top].name);
+printf("\n usn:%s",stud[top].usn);
+printf("\n email:%s",stud[top].email);
+}
+}
+int full()
+{
+if(top>=max_size-1)
+return 1;
+else return 0;
+}
+int empty()
+{
+if(top==-1)
+return 1;
+else
+return 0;
+}
+void print()
+{
+if (empty()==1)
+printf("student list is empty");
+else
+{
+int i;
+for(i=0;i<=top;i++)
+{
+printf("\n %d.name:%s",i+1,stud[i].name);
+printf("\n usn: %s",stud[i].usn);
+printf("\n email: %s",stud[i].email);
+}
+}
+}
+void main()
+{char c='y';
+int x;
+clrscr();
+while(c=='y'||c=='Y')
+{printf("choose an operation");
+printf("\n1. enter student details\n 2.pop out latest details\n3.print latest entry\n4.print student list in auditoriam");
+scanf("%d",&x);
+switch(x)
+{case 1: push(stud);
+break;
+case 2: pop();
+break;
+case 3: display();
+break;
+case 4: print();
+break;
+default: printf("enter valid operation ");
+}
+printf("\n perform an opertion(y/n)");
+fflush(stdin);
+scanf("%c",&c);
+}
+getch();
+}
+
+
+
+
+
